@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prince Biney - Career Development Plan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.1)" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #e0e7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator::after {
+            content: '↓';
+            font-size: 2rem;
+            color: white;
+        }
+
+        /* Vision Section */
+        .vision-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(45deg, #f8fafc, #e2e8f0);
+            text-align: center;
+        }
+
+        .vision-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .vision-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .vision-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #4a5568;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vision-text::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c);
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #667eea 100%);
+            position: relative;
+        }
+
+        .timeline-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            background-size: 50px 50px;
+        }
+
+        .timeline-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline-title {
+            text-align: center;
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 4rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 40px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, #f093fb, #f5576c, #4facfe, #00f2fe);
+            border-radius: 2px;
+            box-shadow: 0 0 20px rgba(255,255,255,0.3);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            padding-left: 4rem;
+            opacity: 0;
+            transform: translateX(50px);
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        .timeline-item:nth-child(even) {
+            transform: translateX(-50px);
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.6s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.8s; }
+        .timeline-item:nth-child(5) { animation-delay: 1.0s; }
+
+        .timeline-marker {
+            position: absolute;
+            left: -3rem;
+            top: 1rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 30px rgba(240, 147, 251, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c);
+        }
+
+        .phase-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .phase-years {
+            color: #667eea;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .phase-description {
+            color: #4a5568;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        /* Commitments Section */
+        .commitments-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(45deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+        }
+
+        .commitments-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .commitments-title {
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
+            color: #2d3748;
+        }
+
+        .commitments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .commitment-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .commitment-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .commitment-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .commitment-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .commitment-text {
+            font-size: 1.1rem;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #2d3748, #4a5568);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 10px 30px rgba(240, 147, 251, 0.4);
+            }
+            50% {
+                box-shadow: 0 10px 30px rgba(240, 147, 251, 0.8);
+            }
+            100% {
+                box-shadow: 0 10px 30px rgba(240, 147, 251, 0.4);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .timeline {
+                padding-left: 1rem;
+            }
+            
+            .timeline-item {
+                padding-left: 3rem;
+            }
+            
+            .timeline-marker {
+                left: -2rem;
+                width: 40px;
+                height: 40px;
+                font-size: 0.9rem;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Prince Emmanuel Baah-Biney</h1>
+            <p>10-Year Career Development Plan</p>
+            <p style="font-size: 1.1rem; opacity: 0.8;">From Junior Developer to Tech Leader & Academic Contributor</p>
+        </div>
+        <div class="scroll-indicator"></div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="vision-section">
+        <div class="vision-content">
+            <h2>Vision & Purpose</h2>
+            <div class="vision-text">
+                My vision is to build a career that connects professional software engineering, entrepreneurship, and academic research. I believe that modern technology leaders thrive at the intersection of these domains. By developing deep technical skills, pursuing business innovation, and contributing to knowledge-sharing through teaching and writing, I aim to create a meaningful and lasting impact in the tech ecosystem.
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <div class="timeline-container">
+            <h2 class="timeline-title">Career Journey Timeline</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">I</div>
+                    <div class="timeline-content">
+                        <h3 class="phase-title">Technical Foundation and Integration</h3>
+                        <div class="phase-years">Years 1–2</div>
+                        <p class="phase-description">
+                            Building a strong foundation in software engineering by mastering Angular, modern web technologies, and full-stack development principles. Currently a Junior Developer under the Graduate Trainee Programme at AmaliTech, focusing on real-world projects, agile methodologies, and beginning technical writing on platforms like Medium and Dev.to.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">II</div>
+                    <div class="timeline-content">
+                        <h3 class="phase-title">Professional Growth and Community Engagement</h3>
+                        <div class="phase-years">Years 3–4</div>
+                        <p class="phase-description">
+                            Advancing to mid-level developer with increased responsibilities, mentoring others, and leading smaller teams. Developing leadership and communication skills while increasing involvement in the tech ecosystem through consistent writing, speaking at meetups, contributing to open-source projects, and researching master's degree programs.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">III</div>
+                    <div class="timeline-content">
+                        <h3 class="phase-title">Senior Engineering and Entrepreneurial Initiatives</h3>
+                        <div class="phase-years">Years 5–6</div>
+                        <p class="phase-description">
+                            Becoming a senior developer or team lead, driving architecture decisions and mentoring junior engineers. Entrepreneurial ambitions take shape with groundwork for first tech startup. Pursuing a master's degree in Computer Science to deepen technical knowledge and prepare for future PhD program.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">IV</div>
+                    <div class="timeline-content">
+                        <h3 class="phase-title">Startup Growth and Academic Research</h3>
+                        <div class="phase-years">Years 7–8</div>
+                        <p class="phase-description">
+                            Taking on strategic and technical leadership roles as startup matures, potentially as CTO. Beginning PhD studies, exploring research areas that align with academic and entrepreneurial interests. Expanding public presence through technical talks, articles, workshops, and academic publications.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">V</div>
+                    <div class="timeline-content">
+                        <h3 class="phase-title">Industry Leadership and Academic Excellence</h3>
+                        <div class="phase-years">Years 9–10</div>
+                        <p class="phase-description">
+                            Becoming a recognized leader in the tech industry and PhD graduate. Transitioning into a professorial role while continuing to lead innovative projects. Focus on mentoring future leaders, combining academic theory with practical experience, and expanding influence through thought leadership, teaching, and research.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commitments Section -->
+    <section class="commitments-section">
+        <div class="commitments-container">
+            <h2 class="commitments-title">Continuous Development Commitments</h2>
+            <div class="commitments-grid">
+                <div class="commitment-card">
+                    <div class="commitment-icon">✍️</div>
+                    <div class="commitment-text">
+                        <strong>Technical Writing</strong><br>
+                        Continue writing and publishing technical content regularly to share knowledge and insights with the community.
+                    </div>
+                </div>
+                <div class="commitment-card">
+                    <div class="commitment-icon">🤝</div>
+                    <div class="commitment-text">
+                        <strong>Professional Networking</strong><br>
+                        Network actively with professionals from both industry and academia to build meaningful connections.
+                    </div>
+                </div>
+                <div class="commitment-card">
+                    <div class="commitment-icon">🚀</div>
+                    <div class="commitment-text">
+                        <strong>Continuous Learning</strong><br>
+                        Stay updated with emerging technologies and pursue relevant certifications to maintain cutting-edge skills.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <h3>Creating Impact Through Innovation, Mentorship, and Education</h3>
+        <p>This plan reflects both ambition and purpose — focused on growth, impact, and legacy in the tech ecosystem.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for better user experience
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add scroll-triggered animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe timeline items
+            document.querySelectorAll('.timeline-item').forEach(item => {
+                observer.observe(item);
+            });
+
+            // Smooth scroll for scroll indicator
+            document.querySelector('.scroll-indicator').addEventListener('click', function() {
+                document.querySelector('.vision-section').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
